@@ -6,6 +6,7 @@ import signal, os
 host_redis=os.environ.get('HOST_REDIS', 'redis')
 port_redis=os.environ.get('PORT_REDIS', '6379')
 env_app=os.environ.get('ENV_APP', 'Desenvolvimento')
+port_app=os.environ.get('PORT_APP', '5000')
 
 app = Flask(__name__)
 redis = Redis(host=host_redis, port=port_redis)
@@ -26,7 +27,7 @@ if __name__ == "__main__":
     signal.signal(signal.SIGTERM, handler)
 
     def run_server():
-        app.run(host="0.0.0.0", debug=True)
+        app.run(host="0.0.0.0", port=int(port_app),  debug=True)
 
     server = Process(target=run_server)
     server.start()
