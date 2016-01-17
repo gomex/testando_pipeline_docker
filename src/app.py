@@ -6,7 +6,7 @@ import signal, os
 host_redis=os.environ.get('HOST_REDIS', 'redis')
 port_redis=os.environ.get('PORT_REDIS', '6379')
 env_app=os.environ.get('ENV_APP', 'Desenvolvimento')
-port_app=os.environ.get('PORT_APP', '5000')
+port_app=os.environ.get('PYTHON_PORT', '5000')
 
 app = Flask(__name__)
 redis = Redis(host=host_redis, port=port_redis)
